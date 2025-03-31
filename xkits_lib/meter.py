@@ -3,9 +3,8 @@
 from time import sleep
 from time import time
 from typing import Optional
-from typing import Union
 
-TimeUnit = Union[float, int]
+from xkits_lib.unit import TimeUnit
 
 
 class TimeMeter():

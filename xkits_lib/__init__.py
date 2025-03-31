@@ -13,7 +13,7 @@ from xkits_lib.meter import CountMeter  # noqa:F401
 from xkits_lib.meter import DownMeter  # noqa:F401
 from xkits_lib.meter import StatusCountMeter  # noqa:F401
 from xkits_lib.meter import TimeMeter  # noqa:F401
-from xkits_lib.meter import TimeUnit  # noqa:F401
 from xkits_lib.meter import TsCountMeter  # noqa:F401
 from xkits_lib.path import Workspace  # noqa:F401
+from xkits_lib.unit import TimeUnit  # noqa:F401
 from xkits_lib.utils import singleton  # noqa:F401

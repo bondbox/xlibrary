@@ -9,7 +9,7 @@ from typing import Optional
 from typing import TypeVar
 
 from xkits_lib.meter import DownMeter
-from xkits_lib.meter import TimeUnit
+from xkits_lib.unit import TimeUnit
 
 
 class CacheLookupError(LookupError):
