@@ -9,6 +9,9 @@ class Timestamp():
         self.__timestamp: datetime = t.astimezone() if (
             t := ts or datetime.now()).tzinfo is None else t
 
+    def __str__(self) -> str:
+        return self.dump()
+
     @property
     def value(self) -> datetime:
         return self.__timestamp

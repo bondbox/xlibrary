@@ -5,8 +5,6 @@ from datetime import timezone
 from datetime import tzinfo
 import unittest
 
-import pytz
-
 from xkits_lib.time import Timestamp
 
 
@@ -29,27 +27,27 @@ class TestTimestamp(unittest.TestCase):
     def test_now(self):
         self.assertIsInstance(timestamp := Timestamp().dump(), str)
         self.assertIsInstance(ts := Timestamp.load(timestamp), Timestamp)
-        self.assertEqual(ts.dump(), timestamp)
         self.assertIsInstance(ts.delta, float)
         self.assertIsNotNone(ts.value.tzinfo)
+        self.assertEqual(str(ts), timestamp)
 
     def test_ts(self):
         self.assertIsInstance(now := datetime.now(), datetime)
         self.assertIsInstance(timestamp := Timestamp(now).dump(), str)
         self.assertIsInstance(ts := Timestamp.load(timestamp), Timestamp)
         self.assertEqual(ts.value, now.astimezone())
-        self.assertEqual(ts.dump(), timestamp)
         self.assertIsInstance(ts.delta, float)
         self.assertIsNotNone(ts.value.tzinfo)
+        self.assertEqual(str(ts), timestamp)
 
     def test_tz(self):
-        self.assertIsInstance(tz := pytz.timezone("UTC"), tzinfo)
+        self.assertIsInstance(tz := timezone.utc, tzinfo)
         self.assertIsInstance(now := datetime.now(tz), datetime)
         self.assertIsInstance(timestamp := Timestamp(now).dump(), str)
         self.assertIsInstance(ts := Timestamp.load(timestamp), Timestamp)
         self.assertIs(ts.value.tzinfo, timezone.utc)
-        self.assertEqual(ts.dump(), timestamp)
         self.assertIsInstance(ts.delta, float)
+        self.assertEqual(str(ts), timestamp)
         self.assertEqual(ts.value, now)
 
 
