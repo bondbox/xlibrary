@@ -21,7 +21,7 @@ class Timestamp():
         return (datetime.now(self.value.tzinfo) - self.value).total_seconds()
 
     def dump(self) -> str:
-        return self.value.isoformat()
+        return self.value.isoformat(timespec="milliseconds")
 
     @classmethod
     def load(cls, timestamp: str) -> "Timestamp":

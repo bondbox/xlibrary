@@ -35,7 +35,7 @@ class TestTimestamp(unittest.TestCase):
         self.assertIsInstance(now := datetime.now(), datetime)
         self.assertIsInstance(timestamp := Timestamp(now).dump(), str)
         self.assertIsInstance(ts := Timestamp.load(timestamp), Timestamp)
-        self.assertEqual(ts.value, now.astimezone())
+        self.assertEqual(ts.value.replace(microsecond=0), now.astimezone().replace(microsecond=0))  # noqa:E501
         self.assertIsInstance(ts.delta, float)
         self.assertIsNotNone(ts.value.tzinfo)
         self.assertEqual(str(ts), timestamp)
@@ -48,7 +48,7 @@ class TestTimestamp(unittest.TestCase):
         self.assertIs(ts.value.tzinfo, timezone.utc)
         self.assertIsInstance(ts.delta, float)
         self.assertEqual(str(ts), timestamp)
-        self.assertEqual(ts.value, now)
+        self.assertEqual(ts.value.replace(microsecond=0), now.replace(microsecond=0))  # noqa:E501
 
 
 if __name__ == "__main__":
