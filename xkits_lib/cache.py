@@ -30,7 +30,7 @@ CADT = TypeVar("CADT")
 
 
 class CacheAtom(DownMeter, Generic[CADT]):
-    '''Data cache without name'''
+    """Data cache without name"""
 
     def __init__(self, data: CADT, lifetime: TimeUnit = 0):
         super().__init__(lifetime=lifetime)
@@ -40,7 +40,7 @@ class CacheAtom(DownMeter, Generic[CADT]):
         return f"cache object at {id(self)}"
 
     def update(self, data: CADT) -> None:
-        '''update cache data'''
+        """update cache data"""
         self.__data = data
         self.renew()
 
@@ -57,7 +57,7 @@ CDT = TypeVar("CDT")
 
 
 class CacheData(CacheAtom[CDT]):
-    '''Data cache with enforces expiration check'''
+    """Data cache with enforces expiration check"""
 
     @property
     def data(self) -> CDT:
@@ -75,7 +75,7 @@ NCDT = TypeVar("NCDT")
 
 
 class NamedCache(CacheAtom[NCDT], Generic[NCNT, NCDT]):
-    '''Named data cache'''
+    """Named data cache"""
 
     def __init__(self, name: NCNT, data: NCDT, lifetime: TimeUnit = 0):
         super().__init__(data, lifetime)
@@ -94,7 +94,7 @@ CIDT = TypeVar("CIDT")
 
 
 class CacheItem(NamedCache[CINT, CIDT]):
-    '''Named data cache with enforces expiration check'''
+    """Named data cache with enforces expiration check"""
 
     def __init__(self, name: CINT, data: CIDT, lifetime: TimeUnit = 0):
         super().__init__(name, data, lifetime)
@@ -115,7 +115,7 @@ IPVT = TypeVar("IPVT")
 
 
 class ItemPool(Generic[IPKT, IPVT]):
-    '''Cache item pool'''
+    """Cache item pool"""
 
     def __init__(self, lifetime: TimeUnit = 0):
         self.__pool: Dict[IPKT, CacheItem[IPKT, IPVT]] = {}
@@ -178,7 +178,7 @@ CPVT = TypeVar("CPVT")
 
 
 class CachePool(ItemPool[CPIT, CPVT]):
-    '''Named data cache pool'''
+    """Named data cache pool"""
 
     def __init__(self, lifetime: TimeUnit = 0):
         super().__init__(lifetime=lifetime)

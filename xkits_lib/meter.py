@@ -8,7 +8,7 @@ from xkits_lib.unit import TimeUnit
 
 
 class TimeMeter():
-    '''Timer'''
+    """Timer"""
 
     def __init__(self, startup: bool = True, always: bool = False):
         timestamp: float = time()
@@ -35,12 +35,12 @@ class TimeMeter():
 
     @property
     def started(self) -> bool:
-        '''running and not stopped'''
+        """running and not stopped"""
         return self.started_time > 0.0 and self.stopped_time == 0.0
 
     @property
     def stopped(self) -> bool:
-        '''started and stopped'''
+        """started and stopped"""
         return self.started_time > 0.0 and self.stopped_time > 0.0
 
     def restart(self):
@@ -60,12 +60,12 @@ class TimeMeter():
             self.__stopped = time()
 
     def clock(self, delay: TimeUnit = 1.0):
-        '''sleep for a while'''
+        """sleep for a while"""
         if self.started and delay > 0.0:
             sleep(delay)
 
     def alarm(self, endtime: TimeUnit):
-        '''sleep until endtime'''
+        """sleep until endtime"""
         if not self.started:
             self.startup()
         while (delta := endtime - self.runtime) > 0.0:
@@ -77,7 +77,7 @@ class TimeMeter():
 
 
 class DownMeter(TimeMeter):
-    '''Countdown'''
+    """Countdown"""
 
     def __init__(self, lifetime: TimeUnit = 0.0, startup: bool = True):
         self.__lifetime: float = max(float(lifetime), 0.0)
@@ -99,14 +99,14 @@ class DownMeter(TimeMeter):
         super().restart()
 
     def renew(self, lifetime: Optional[TimeUnit] = None) -> None:
-        '''renew timestamp and update lifetime(optional)'''
+        """renew timestamp and update lifetime(optional)"""
         if lifetime is not None:
             self.__lifetime = float(lifetime)
         super().restart()
 
 
 class CountMeter():
-    '''Counter'''
+    """Counter"""
 
     def __init__(self, allow_sub: bool = False):
         self.__allow_sub: bool = allow_sub
@@ -135,7 +135,7 @@ class CountMeter():
 
 
 class StatusCountMeter(CountMeter):
-    '''Counter for status'''
+    """Counter for status"""
 
     def __init__(self):
         super().__init__(allow_sub=False)
@@ -165,7 +165,7 @@ class StatusCountMeter(CountMeter):
 
 
 class TsCountMeter(CountMeter):
-    '''Counter with timestamp'''
+    """Counter with timestamp"""
 
     def __init__(self, allow_sub: bool = False):
         super().__init__(allow_sub=allow_sub)
