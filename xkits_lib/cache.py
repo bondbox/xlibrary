@@ -140,7 +140,7 @@ class ItemPool(Generic[IPKT, IPVT]):
     def __setitem__(self, index: IPKT, value: IPVT) -> None:
         return self.put(index, value)
 
-    def __getitem__(self, index: IPKT) -> CacheItem:
+    def __getitem__(self, index: IPKT) -> CacheItem[IPKT, IPVT]:
         return self.get(index)
 
     def __delitem__(self, index: IPKT) -> None:
