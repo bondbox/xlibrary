@@ -1,7 +1,7 @@
 # coding:utf-8
 
 __project__ = "xkits-lib"
-__version__ = "0.3"
+__version__ = "0.3.1"
 __urlhome__ = "https://github.com/bondbox/xlibrary/"
 __description__ = "Common library"
 
