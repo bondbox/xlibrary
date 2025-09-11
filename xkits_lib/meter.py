@@ -7,6 +7,31 @@ from typing import Optional
 from xkits_lib.unit import TimeUnit
 
 
+class LiveMeter():
+    """Time To Live"""
+
+    def __init__(self, lease: float = 0.0):
+        self.__stamp: float = time()
+        self.__lease: float = lease
+
+    @property
+    def lease(self) -> float:
+        return self.__lease
+
+    @lease.setter
+    def lease(self, value: float):
+        self.__stamp = time()
+        self.__lease = value
+
+    @property
+    def spent(self) -> float:
+        return time() - self.__stamp
+
+    @property
+    def alive(self) -> bool:
+        return self.spent < self.lease if self.lease > 0 else True
+
+
 class TimeMeter():
     """Timer"""
 

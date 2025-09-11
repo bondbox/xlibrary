@@ -6,6 +6,41 @@ from unittest import mock
 from xkits_lib import meter
 
 
+class TestLiveMeter(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    @mock.patch.object(meter, "time")
+    def test_alive(self, mock_time):
+        mock_time.side_effect = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]  # noqa:E501
+
+        timer = meter.LiveMeter(lease=3.0)
+        self.assertEqual(timer.lease, 3.0)
+        self.assertEqual(timer.spent, 1.0)
+        self.assertTrue(timer.alive)
+        self.assertFalse(timer.alive)
+
+        timer.lease = 5.0
+        self.assertEqual(timer.lease, 5.0)
+        self.assertEqual(timer.spent, 1.0)
+        self.assertTrue(timer.alive)
+        self.assertTrue(timer.alive)
+        self.assertTrue(timer.alive)
+        self.assertFalse(timer.alive)
+
+
 class TestTimeMeter(unittest.TestCase):
 
     @classmethod
