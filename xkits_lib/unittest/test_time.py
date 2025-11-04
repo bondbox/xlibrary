@@ -3,12 +3,13 @@
 from datetime import datetime
 from datetime import timezone
 from datetime import tzinfo
-import unittest
+from unittest import TestCase
+from unittest import main
 
 from xkits_lib.time import Timestamp
 
 
-class TestTimestamp(unittest.TestCase):
+class TestTimestamp(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -52,4 +53,4 @@ class TestTimestamp(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()

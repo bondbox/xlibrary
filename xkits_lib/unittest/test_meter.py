@@ -1,12 +1,13 @@
 # coding:utf-8
 
-import unittest
+from unittest import TestCase
+from unittest import main
 from unittest import mock
 
 from xkits_lib import meter
 
 
-class TestLiveMeter(unittest.TestCase):
+class TestLiveMeter(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -41,7 +42,7 @@ class TestLiveMeter(unittest.TestCase):
         self.assertFalse(timer.alive)
 
 
-class TestTimeMeter(unittest.TestCase):
+class TestTimeMeter(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -166,7 +167,7 @@ class TestTimeMeter(unittest.TestCase):
         self.assertEqual(timer.stopped_time, 0.0)
 
 
-class TestDownMeter(unittest.TestCase):
+class TestDownMeter(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -278,7 +279,7 @@ class TestDownMeter(unittest.TestCase):
         self.assertRaises(RuntimeError, countdown.shutdown)
 
 
-class TestTsCountMeter(unittest.TestCase):
+class TestTsCountMeter(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -359,4 +360,4 @@ class TestTsCountMeter(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()

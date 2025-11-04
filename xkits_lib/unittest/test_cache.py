@@ -1,7 +1,8 @@
 # coding:utf-8
 
 from time import sleep
-import unittest
+from unittest import TestCase
+from unittest import main
 
 from xkits_lib.cache import CacheAtom
 from xkits_lib.cache import CacheData
@@ -13,7 +14,7 @@ from xkits_lib.cache import ItemPool
 from xkits_lib.cache import NamedCache
 
 
-class TestCache(unittest.TestCase):
+class TestCache(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -104,4 +105,4 @@ class TestCache(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()

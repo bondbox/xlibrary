@@ -1,11 +1,12 @@
 # coding:utf-8
 
-import unittest
+from unittest import TestCase
+from unittest import main
 
 from xkits_lib.path import Workspace
 
 
-class TestWorkspace(unittest.TestCase):
+class TestWorkspace(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -31,4 +32,4 @@ class TestWorkspace(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()

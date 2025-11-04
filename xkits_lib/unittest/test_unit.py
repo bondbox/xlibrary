@@ -1,11 +1,12 @@
 # coding:utf-8
 
-import unittest
+from unittest import TestCase
+from unittest import main
 
 from xkits_lib.unit import DataUnit
 
 
-class TestDataUnit(unittest.TestCase):
+class TestDataUnit(TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -79,4 +80,4 @@ class TestDataUnit(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    main()
